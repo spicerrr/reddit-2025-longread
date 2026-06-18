@@ -88,11 +88,6 @@ const brandHints = {
   Cyberpunk: "cdprojekt",
 };
 
-function hasEntityImage(name) {
-  void name;
-  return false;
-}
-
 function entityAvatarHtml(name) {
   return `<span>${initials(name)}</span>`;
 }
