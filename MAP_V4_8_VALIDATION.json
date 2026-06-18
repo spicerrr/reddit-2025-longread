@@ -1,0 +1,14 @@
+{
+  "points": 3299,
+  "edges": 5769,
+  "cross_macro_edges": 1015,
+  "clusters": 45,
+  "bridge_posts": 850,
+  "max_comments": 4013,
+  "p99_comments": 929.2599999999998,
+  "missing_source_rows": 0,
+  "world": [
+    7200.0,
+    4550.0
+  ]
+}

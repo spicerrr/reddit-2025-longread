@@ -1,0 +1,9 @@
+{
+  "points": 3299,
+  "edges": 3174,
+  "cross_macro_edges": 456,
+  "clusters": 30,
+  "max_comments": 4013,
+  "p99_comments": 929.2599999999998,
+  "missing_source_rows": 0
+}
