@@ -85,7 +85,7 @@ for name in fandom_wanted:
     if rows.empty: continue
     row=rows.sort_values('mentions',ascending=False).iloc[0]
     examples=json.loads(row['example_titles_json'])
-    fandom_cards.append({'name':name,'mentions':int(row['mentions']),'community':row['top_community'],'peak_month':row['top_month'],'example':examples[0]['title'] if examples else '', 'reddit_url':examples[0]['reddit_url'] if examples else '#','cover':f"assets/fandoms/{re.sub(r'[^a-z0-9]+','_',name.lower()).strip('_')}.svg"})
+    fandom_cards.append({'name':name,'mentions':int(row['mentions']),'community':row['top_community'],'peak_month':row['top_month'],'example':examples[0]['title'] if examples else '', 'reddit_url':examples[0]['reddit_url'] if examples else '#threads','cover':f"assets/fandom-posters/{re.sub(r'[^a-z0-9]+','_',name.lower()).strip('_')}.webp"})
 
 source_domain_aliases={'youtu.be':'youtube.com','www.youtube.com':'youtube.com','m.youtube.com':'youtube.com'}
 source_flows=source_flows.copy()
@@ -122,7 +122,7 @@ def find_examples(items, month, n=4):
 month_scenes=[]
 for month,spec in month_scene_specs.items():
     relevant=bursts[(bursts['month']==month)&bursts['item'].isin(spec['items'])]
-    month_scenes.append({'month':month,'month_name':month_names[month],'title':spec['title'],'label':spec['label'],'symbol':spec['symbol'],'count':int(relevant['count'].max()) if not relevant.empty else 0,'community_spread':int(relevant['community_spread'].max()) if not relevant.empty else 1,'examples':find_examples(spec['items'],month,4),'art':f"assets/illustrations/month_{month[-2:]}.svg"})
+    month_scenes.append({'month':month,'month_name':month_names[month],'title':spec['title'],'label':spec['label'],'symbol':spec['symbol'],'count':int(relevant['count'].max()) if not relevant.empty else 0,'community_spread':int(relevant['community_spread'].max()) if not relevant.empty else 1,'examples':find_examples(spec['items'],month,4),'art':f"assets/months/{month}.webp"})
 
 topic_lens_ids=[0,1,4,9,11,12]
 topic_lenses=[]
@@ -151,7 +151,7 @@ for subreddit in docs['subreddit'].unique():
     group=docs[docs['subreddit']==subreddit]
     top_macro=group['macro'].value_counts(normalize=True).idxmax()
     modes=group['post_mode'].value_counts(normalize=True).mul(100).round(1).to_dict()
-    subreddit_profiles.append({'id':subreddit,'title':subreddit_titles[subreddit],'posts':int(len(group)),'top_macro':top_macro,'external':float(modes.get('external',0)),'question':float(modes.get('question',0)),'text':float(modes.get('text',0)),'icon':f"assets/subreddits/{subreddit.lower()}.svg"})
+    subreddit_profiles.append({'id':subreddit,'title':subreddit_titles[subreddit],'posts':int(len(group)),'top_macro':top_macro,'external':float(modes.get('external',0)),'question':float(modes.get('question',0)),'text':float(modes.get('text',0)),'icon':f"assets/community-nav/{subreddit.lower()}.svg"})
 
 site_data={'summary':{'discovery_posts':summary['discovery_posts'],'balanced_posts':summary['balanced_posts'],'communities':8,'months':12,'topics':18},'macros':[{'id':m,'label':macro_labels[m],'description':macro_descriptions[m],'color':macro_colors[m]} for m in macro_labels],'mode_cards':mode_cards,'semantic_points':semantic_points,'subreddits':subreddit_profiles,'months':month_scenes,'entities':entity_wall[['entity','mentions','communities','top_community','top_month','entity_type']].to_dict(orient='records'),'entity_timeline':timeline_top.to_dict(orient='records'),'fandoms':fandom_cards,'sources':source_data,'topic_lenses':topic_lenses,'threads':thread_gallery}
 (ROOT/'data'/'site_data.json').write_text(json.dumps(site_data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')

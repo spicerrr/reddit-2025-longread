@@ -28,7 +28,7 @@ const communityNavVisuals = {
   news: { label: "Новости", accent: "#ef4f32", icon: "news" },
   science: { label: "Наука", accent: "#36a88e", icon: "flask" },
   technology: { label: "Технологии", accent: "#8a54e8", icon: "chip" },
-  worldnews: { label: "Мир", accent: "#5b72c8", icon: "globe" },
+  worldnews: { label: "Мировые новости", accent: "#5b72c8", icon: "globe" },
 };
 
 function communityNavAsset(id, ext) {
@@ -37,28 +37,28 @@ function communityNavAsset(id, ext) {
 
 const modeCopy = {
   newsroom: {
-    label: "Новостная витрина",
-    title: "Сначала источник, потом разговор",
-    body: "В r/worldnews, r/news, r/science и r/technology пост чаще всего начинается с внешней ссылки. Пользователь приносит материал редакции, журнала или тех-медиа, а Reddit становится местом отбора и обсуждения.",
-    cover: "assets/communities/worldnews.jpg",
+    label: "Внешние ссылки",
+    title: "Публикации со внешними ссылками",
+    body: "В r/worldnews, r/news, r/science и r/technology преобладают публикации со ссылками на внешние сайты. Эти сообщества чаще других используют новостные материалы, научные статьи и технологические публикации как отправную точку обсуждения.",
+    cover: "assets/communities/worldnews.webp",
     metricKey: "external",
-    metricLabel: "постов ведут на внешний сайт",
+    metricLabel: "публикаций ведут на внешний сайт",
   },
   forum: {
-    label: "Разговорная комната",
-    title: "Вопрос важнее источника",
-    body: "В r/CasualConversation и r/NoStupidQuestions поводом становится личный опыт: «почему это происходит?», «у кого было так же?», «как вы к этому относитесь?».",
-    cover: "assets/communities/casualconversation.jpg",
+    label: "Вопросы и текстовые публикации",
+    title: "Публикации без внешних ссылок",
+    body: "В r/CasualConversation и r/NoStupidQuestions доминируют вопросы и текстовые публикации без внешних ссылок. В них пользователи описывают личный опыт, задают бытовые вопросы и собирают ответы других участников.",
+    cover: "assets/communities/casualconversation.webp",
     metricKey: "question",
-    metricLabel: "постов сформулированы как вопрос",
+    metricLabel: "публикаций сформулированы как вопрос",
   },
   fandom: {
-    label: "Фанатский клуб",
-    title: "Трейлер соседствует со спором",
-    body: "r/movies и r/gaming смешивают две модели: ссылки на релизы и новости стоят рядом с рекомендациями, разбором лора и фанатскими конфликтами.",
-    cover: "assets/communities/gaming.jpg",
+    label: "Смешанный формат",
+    title: "Ссылки соседствуют с пользовательскими обсуждениями",
+    body: "В r/movies и r/gaming публикации со ссылками на трейлеры, релизы и новости соседствуют с рекомендациями, обсуждением франшиз и пользовательскими вопросами.",
+    cover: "assets/communities/gaming.webp",
     metricKey: "external",
-    metricLabel: "постов — внешние ссылки",
+    metricLabel: "публикаций содержат внешние ссылки",
   },
 };
 
@@ -142,7 +142,7 @@ function buildFallbackDossiers() {
     return [
       {
         id,
-        title: point.title || "Тред Reddit",
+        title: point.title || "Публикация Reddit",
         subreddit: point.subreddit || "",
         month: point.month || "",
         date: point.month ? `${point.month}-01` : "",
@@ -154,10 +154,8 @@ function buildFallbackDossiers() {
         macro: point.macro || "",
         macro_label: macroById(point.macro)?.label || "",
         context:
-          "Пост входит в семантическую карту проекта. Карточка собрана из сохранённых метаданных выгрузки.",
-        preview:
-          ASSETS?.communities?.[point.subreddit]?.cover ||
-          `assets/communities/${String(point.subreddit || "").toLowerCase()}.jpg`,
+          "Публикация входит в тематическую карту проекта. Карточка собрана из сохранённых метаданных выгрузки.",
+        preview: communityCover(point.subreddit),
         original_url: point.reddit_url || "",
         external_url: "",
         domain: "reddit.com",
@@ -246,7 +244,7 @@ function initThreadReader() {
   const external = $("#readerExternalSource");
 
   function fallbackPreview(dossier) {
-    return `assets/communities/${String(dossier.subreddit || "").toLowerCase()}.jpg`;
+    return communityCover(dossier.subreddit);
   }
 
   function openShell() {
@@ -257,9 +255,9 @@ function initThreadReader() {
 
   function renderLoading(dossier) {
     preview.src = dossier.preview || fallbackPreview(dossier);
-    preview.alt = `Визуальное превью треда r/${dossier.subreddit || ""}`;
+    preview.alt = `Превью публикации r/${dossier.subreddit || ""}`;
     meta.textContent = `${dossier.month || ""} · r/${dossier.subreddit || ""}`;
-    title.textContent = dossier.title || "Тред Reddit";
+    title.textContent = dossier.title || "Публикация Reddit";
     badges.innerHTML = "<span>Загрузка карточки</span>";
     context.textContent =
       dossier.context ||
@@ -267,9 +265,9 @@ function initThreadReader() {
     body.textContent =
       "Подгружаем thread_dossiers.json только по запросу, чтобы не тянуть полный архив при первом экране.";
     state.innerHTML =
-      "<strong>Загрузка архива…</strong><span>Это первое открытие треда в текущей сессии. Как только архив подгрузится, карточка обновится автоматически.</span>";
+      "<strong>Загрузка архива…</strong><span>Это первое открытие публикации в текущей сессии. Как только архив подгрузится, карточка обновится автоматически.</span>";
     related.innerHTML =
-      '<div class="reader-related-empty">Связанные треды появятся после загрузки архива.</div>';
+      '<div class="reader-related-empty">Связанные публикации появятся после загрузки архива.</div>';
     original.hidden = true;
     original.removeAttribute("href");
     external.hidden = true;
@@ -278,9 +276,9 @@ function initThreadReader() {
 
   function renderLoadError(dossier, error) {
     preview.src = dossier.preview || fallbackPreview(dossier);
-    preview.alt = `Визуальное превью треда r/${dossier.subreddit || ""}`;
+    preview.alt = `Превью публикации r/${dossier.subreddit || ""}`;
     meta.textContent = `${dossier.month || ""} · r/${dossier.subreddit || ""}`;
-    title.textContent = dossier.title || "Тред Reddit";
+    title.textContent = dossier.title || "Публикация Reddit";
     badges.innerHTML = "<span>Архив недоступен</span>";
     context.textContent =
       dossier.context ||
@@ -289,7 +287,7 @@ function initThreadReader() {
       "Не удалось догрузить thread_dossiers.json. Остаются только заголовок, месяц и сообщество из основной выгрузки.";
     state.innerHTML = `<strong>Ошибка загрузки</strong><span>${escapeHtml(error.message || "Архив временно недоступен.")}</span>`;
     related.innerHTML =
-      '<div class="reader-related-empty">Связанные треды недоступны, пока файл архива не загрузится.</div>';
+      '<div class="reader-related-empty">Связанные публикации недоступны, пока файл архива не загрузится.</div>';
     original.hidden = !dossier.original_url;
     if (dossier.original_url) original.href = dossier.original_url;
     external.hidden = true;
@@ -299,9 +297,9 @@ function initThreadReader() {
   function renderDossier(dossier) {
     if (!dossier) return;
     preview.src = dossier.preview || fallbackPreview(dossier);
-    preview.alt = `Визуальное превью треда r/${dossier.subreddit}`;
+    preview.alt = `Превью публикации r/${dossier.subreddit}`;
     meta.textContent = `${dossier.month || ""} · r/${dossier.subreddit || ""}`;
-    title.textContent = dossier.title || "Тред Reddit";
+    title.textContent = dossier.title || "Публикация Reddit";
     badges.innerHTML = [
       dossier.scene ? `<span>${escapeHtml(dossier.scene)}</span>` : "",
       dossier.topic_label
@@ -320,7 +318,7 @@ function initThreadReader() {
       body.textContent =
         dossier.domain && dossier.domain !== "reddit.com"
           ? `Этот пост вёл на внешний материал ${dossier.domain}. В выгрузке сохранились заголовок, дата, сообщество и контекст, но собственного текста поста не было.`
-          : "В выгрузке сохранился заголовок и метаданные треда, но основной текст отсутствовал или был недоступен уже в момент сбора.";
+          : "В выгрузке сохранились заголовок и метаданные публикации, но основной текст отсутствовал или был недоступен уже в момент сбора.";
       state.innerHTML =
         "<strong>Сохранён только заголовок</strong><span>Карточка не восстанавливает удалённый текст и прямо отмечает пробел в архиве.</span>";
     }
@@ -348,10 +346,10 @@ function initThreadReader() {
         .map((relatedId) => {
           const item = DOSSIER_BY_ID.get(relatedId);
           if (!item) return "";
-          return `<a class="reader-related-card" href="#thread-${item.id}" data-thread-id="${item.id}"><small>${escapeHtml(item.month || "")} · r/${escapeHtml(item.subreddit || "")}</small><strong>${escapeHtml(item.title || "")}</strong><span>Открыть внутри проекта →</span></a>`;
+          return `<a class="reader-related-card" href="#thread-${item.id}" data-thread-id="${item.id}"><small>${escapeHtml(item.month || "")} · r/${escapeHtml(item.subreddit || "")}</small><strong>${escapeHtml(item.title || "")}</strong><span>Открыть публикацию →</span></a>`;
         })
         .join("") ||
-      '<div class="reader-related-empty">Для этого треда соседняя подборка ещё не сформирована.</div>';
+      '<div class="reader-related-empty">Для этой публикации связанные примеры пока не добавлены.</div>';
   }
 
   async function open(id, updateHash = true) {
@@ -412,7 +410,7 @@ function renderHero() {
   const s = DATA.summary;
   $("#heroNumbers").innerHTML = [
     [fmt.format(s.balanced_posts), "постов в равном сравнении"],
-    [fmt.format(s.discovery_posts), "постов для поиска сюжетов"],
+    [fmt.format(s.discovery_posts), "публикаций в основном корпусе"],
     [s.communities, "сообществ"],
     [s.months, "месяцев"],
   ]
@@ -429,7 +427,7 @@ function renderHero() {
         accent: "#ff4500",
         icon: "chat",
       };
-      const navCover = communityNavAsset(item.id, "jpg");
+      const navCover = communityNavAsset(item.id, "webp");
       const icon = communityNavAsset(item.id, "svg");
 
       return `
@@ -475,6 +473,13 @@ function renderHero() {
   });
 }
 
+function communityCover(subreddit = "") {
+  return (
+    ASSETS?.communities?.[subreddit]?.cover ||
+    `assets/communities/${String(subreddit).toLowerCase()}.webp`
+  );
+}
+
 function renderModes() {
   $("#modeStories").innerHTML = DATA.mode_cards
     .map((mode) => {
@@ -512,23 +517,21 @@ function renderWorlds() {
   const allThreads = DATA.semantic_points || [];
   const narrativeByMacro = {
     everyday:
-      "Здесь год чувствуется через усталость, дружбу, неловкие вопросы, праздники и повседневные ритуалы. Пользователь приходит не за сводкой новостей, а за чужим опытом и человеческой реакцией.",
+      "В этом сообществе заметны личные истории, бытовые вопросы, отношения, работа, праздники и повседневные ситуации.",
     power:
-      "Здесь обсуждение строится вокруг событий, решений и последствий. Пост — это вход в повестку, а не исповедь.",
+      "В этом сообществе преобладают публикации о политике, международных конфликтах, государственных решениях и их последствиях.",
     technology:
-      "Это пространство, где новости о продуктах и компаниях быстро превращаются в спор о будущем и удобстве повседневной жизни.",
+      "В этом сообществе обсуждаются технологические компании, продукты, платформы, данные и последствия цифровых изменений.",
     culture:
-      "Этот мир живёт по календарю релизов. Здесь важно не только что вышло, но и как фанаты успели на это отреагировать.",
+      "В этом сообществе представлены релизы, франшизы, пользовательские рекомендации и обсуждения игр, фильмов и сериалов.",
     science:
-      "Здесь люди читают и пересказывают исследования. Разговор строится вокруг доказательств, выводов и последствий для повседневности.",
+      "В этом сообществе публикации чаще всего пересказывают исследования и обсуждают научные результаты, здоровье и доказательства.",
   };
   let activeId = DATA.subreddits[0]?.id;
 
   nav.innerHTML = DATA.subreddits
     .map((item, i) => {
-      const cover =
-        ASSETS.communities[item.id]?.cover ||
-        `assets/communities/${item.id.toLowerCase()}.jpg`;
+      const cover = communityCover(item.id);
       return `<button class="world-nav-card ${i === 0 ? "is-active" : ""}" data-id="${item.id}">
       <img src="${cover}" alt="" loading="lazy" decoding="async">
       <div>
@@ -549,9 +552,7 @@ function renderWorlds() {
       node.classList.toggle("is-active", node.dataset.id === id),
     );
     const item = DATA.subreddits.find((s) => s.id === id);
-    const cover =
-      ASSETS.communities[item.id]?.cover ||
-      `assets/communities/${item.id.toLowerCase()}.jpg`;
+    const cover = communityCover(item.id);
     const threads = allThreads.filter((t) => t.subreddit === id).slice(0, 4);
     const bars = [
       ["Внешние ссылки", item.external],
@@ -575,13 +576,13 @@ function renderWorlds() {
       </div>
       <div class="world-bottom">
         <div class="world-bars">
-          <div class="world-bars-title">Как здесь обычно начинается разговор</div>
+          <div class="world-bars-title">Основные форматы публикаций</div>
           ${bars.map(([label, val]) => `<div class="world-bar-row"><span>${label}</span><div class="world-bar-track"><i style="width:${Math.max(4, Number(val))}%"></i></div><b>${Number(val).toFixed(1)}%</b></div>`).join("")}
         </div>
         <div class="world-threads">
-          <div class="world-bars-title">Треды, которые задают тон</div>
+          <div class="world-bars-title">Примеры публикаций</div>
           <div class="world-thread-grid">
-            ${threads.map((t) => `<a class="world-thread" ${internalThreadHref(t.reddit_url)}><small>${t.month}</small><strong>${escapeHtml(t.title)}</strong><span>Открыть подборку →</span></a>`).join("")}
+            ${threads.map((t) => `<a class="world-thread" ${internalThreadHref(t.reddit_url)}><small>${t.month}</small><strong>${escapeHtml(t.title)}</strong><span>Открыть публикацию →</span></a>`).join("")}
           </div>
         </div>
       </div>`;
@@ -765,7 +766,7 @@ function initSemanticMap() {
     });
 
     if (stageHint) {
-      stageHint.innerHTML = `<span>✦</span> ${fmt.format(points.length)} постов · размер показывает длину ветки · линии показывают общий словарь · мосты связывают разные миры`;
+      stageHint.innerHTML = `<span>✦</span> ${fmt.format(points.length)} публикаций · размер показывает относительную активность обсуждения · линии показывают общий словарь`;
     }
   }
 
@@ -788,7 +789,7 @@ function initSemanticMap() {
   function directPostHref(point) {
     return point?.url
       ? `href="${escapeHtml(point.url)}" target="_blank" rel="noopener noreferrer"`
-      : 'href="#" aria-disabled="true"';
+      : 'href="#map" aria-disabled="true" tabindex="-1"';
   }
 
   function renderPinned(macroId = "technology") {
@@ -1692,7 +1693,7 @@ function renderYear() {
     );
     visual.classList.add("is-changing");
     setTimeout(() => {
-      image.src = `assets/months/${m.month}.jpg`;
+      image.src = m.art || `assets/months/${m.month}.webp`;
       image.alt = `${m.month_name}: ${m.title}`;
       kicker.textContent = `${m.month_name} 2025`;
       title.textContent = m.title;
@@ -1727,11 +1728,11 @@ function monthNarrative(month) {
     "2025-04":
       "Один месяц вместил тарифы, смерть Папы Франциска и культурные релизы. Именно так общий Reddit превращается в несколько несинхронных календарей.",
     "2025-05":
-      "Новостная часть платформы следила за Индией и Пакистаном, а игровая — за GTA и Witcher. Эти сюжеты почти не пересекались.",
+      "В мае выросло число публикаций об Индии и Пакистане в новостных сообществах, а в r/gaming усилилось внимание к GTA и The Witcher.",
     "2025-06":
-      "Иран стал редким сквозным сюжетом: он одновременно вошёл в мировые новости, американскую повестку и технологические обсуждения.",
+      "В июне публикации об Иране одновременно участились в r/worldnews, r/news и r/technology.",
     "2025-07":
-      "Культурные сообщества жили вокруг Superman и Stop Killing Games. Релизный календарь вытеснил политическую повестку.",
+      "В июле в культурных сообществах выросло число публикаций о Superman и Stop Killing Games.",
     "2025-08":
       "Переговоры и Battlefield показали две версии одного месяца: дипломатическую и игровую.",
     "2025-09":
@@ -1739,13 +1740,13 @@ function monthNarrative(month) {
     "2025-10":
       "Halloween, Nobel и Xbox сделали октябрь многослойным: ритуал, институт и платформа одновременно.",
     "2025-11":
-      "Thanksgiving и социальные платформы вернули часть разговоров к повседневности и общению.",
+      "В ноябре выросло число публикаций о Thanksgiving и социальных платформах.",
     "2025-12":
       "Christmas прошёл через семь сообществ и стал редким общим ритуалом, хотя каждый сабреддит говорил о нём по-своему.",
   };
   return (
     narratives[month.month] ||
-    "Сюжет месяца собран из реальных всплесков слов, названий и тредов."
+    "Основные темы месяца собраны по реальным всплескам слов, названий и публикаций."
   );
 }
 
@@ -1769,20 +1770,20 @@ const entityDashboardState = {
 
 const entityCategoryCopy = {
   all: {
-    title: "Общая сцена",
-    copy: "Десять наиболее заметных объектов года. Линия показывает ритм упоминаний, круг — интенсивность конкретного месяца.",
+    title: "Все категории",
+    copy: "Десять объектов с наибольшим числом упоминаний. Линия показывает помесячную динамику, круг — число упоминаний в конкретном месяце.",
   },
   person: {
-    title: "Персоны",
-    copy: "Публичные фигуры удерживаются в повестке по-разному: одни возвращаются весь год, другие концентрируют внимание вокруг одного события.",
+    title: "Лица",
+    copy: "Здесь показаны публичные фигуры, которые чаще других упоминались в выбранных сообществах в течение года.",
   },
   country: {
     title: "Страны и политические субъекты",
-    copy: "Географические объекты образуют собственный новостной календарь. В этой вкладке вместе показаны страны, территории и политические субъекты.",
+    copy: "В этой вкладке показаны страны, территории и политические субъекты, которые чаще упоминались в новостных и политических публикациях.",
   },
   platform: {
     title: "Платформы и технологические бренды",
-    copy: "Технологические названия живут в ритме запусков, регулирования, обновлений и пользовательских конфликтов.",
+    copy: "Здесь показаны платформы и технологические бренды, чьи упоминания росли из-за запусков, регулирования, обновлений и пользовательских обсуждений.",
   },
 };
 
@@ -1961,12 +1962,10 @@ function hashEntity(value) {
 function svgEntityVisual(item, index, x, y, size = 40) {
   const category = getEntityCategory(item);
   const color = entityColor(item, index);
-  const clipId = `entity-clip-${index}-${Math.abs(hashEntity(item.entity))}`;
-  const image = entityImageUrls[String(item.entity).toLowerCase()];
-  if (category === "person" && image) {
-    return `<defs><clipPath id="${clipId}"><circle cx="${x}" cy="${y}" r="${size / 2}"/></clipPath></defs>
-      <circle cx="${x}" cy="${y}" r="${size / 2 + 2}" fill="${color}" opacity=".18"/>
-      <image href="${escapeHtml(image)}" x="${x - size / 2}" y="${y - size / 2}" width="${size}" height="${size}" preserveAspectRatio="xMidYMid slice" clip-path="url(#${clipId})"/>`;
+  if (category === "person") {
+    const monogram = initials(item.entity);
+    return `<circle cx="${x}" cy="${y}" r="${size / 2}" fill="#fff" stroke="${color}" stroke-width="2"/>
+      <text x="${x}" y="${y + 6}" text-anchor="middle" font-size="${monogram.length > 2 ? 11 : 16}" font-weight="800" fill="${color}">${escapeHtml(monogram)}</text>`;
   }
   if (category === "platform") {
     const url = logoUrl(platformBrandKeys[item.entity]);
@@ -1997,7 +1996,7 @@ function entityCardContext(item) {
   const category = getEntityCategory(item);
   if (category === "person") return `Охват: ${item.communities} сообществ`;
   if (category === "platform") return `Видна в ${item.communities} сообществах`;
-  return `В повестке ${item.communities} сообществ`;
+  return `Упоминается в ${item.communities} сообществах`;
 }
 
 function renderEntities() {
@@ -2205,7 +2204,7 @@ function renderFandoms() {
       return `
       <article class="fandom-poster reveal">
         <a ${internalThreadHref(f.reddit_url)}>
-          <img class="fandom-poster-bg" src="assets/fandom-posters/${slug}.jpg" alt="Редакционная обложка ${escapeHtml(f.name)}" loading="lazy" decoding="async">
+          <img class="fandom-poster-bg" src="${f.cover || `assets/fandom-posters/${slug}.webp`}" alt="Редакционная обложка ${escapeHtml(f.name)}" loading="lazy" decoding="async">
           <div class="fandom-poster-shade"></div>
           <div class="fandom-logo-wrap"><div class="fandom-logo">${makeLogo(logoKey, f.name)}</div><span class="fandom-index">${String(i + 1).padStart(2, "0")}</span></div>
           <div class="fandom-caption"><strong>${escapeHtml(f.name)}</strong><span>${f.mentions} упоминаний · пик ${escapeHtml(peakMonthLabel)} · r/${f.community}</span></div>
@@ -2308,9 +2307,7 @@ function renderSources() {
 
   targets.innerHTML = DATA.subreddits
     .map((s) => {
-      const cover =
-        ASSETS.communities[s.id]?.cover ||
-        `assets/communities/${s.id.toLowerCase()}.jpg`;
+      const cover = communityCover(s.id);
       return `<article class="source-target" data-target="${s.id}"><img src="${cover}" alt="" loading="lazy" decoding="async"><span><strong>r/${s.id}</strong><small>${s.title}</small></span></article>`;
     })
     .join("");
@@ -2383,8 +2380,12 @@ function renderSources() {
   list.addEventListener("mouseleave", () => {
     activateSource(selectedSourceIndex);
   });
+  list.addEventListener("focusout", (event) => {
+    if (list.contains(event.relatedTarget)) return;
+    activateSource(selectedSourceIndex);
+  });
   activateSource(null);
-  window.addEventListener("resize", () => draw());
+  window.addEventListener("resize", () => activateSource(selectedSourceIndex));
 }
 
 function renderTopics() {
@@ -2403,10 +2404,10 @@ function renderTopics() {
         <p>${macro.description}</p>
       </article>
       <div class="topic-meta">
-        <div><b>${fmt.format(topic.posts)}</b><span>постов в кластере</span></div>
-        <div><b>${topic.peak_month}</b><span>месяц максимума</span></div>
+        <div><b>${fmt.format(topic.posts)}</b><span>публикаций в теме</span></div>
+        <div><b>${topic.peak_month}</b><span>месяц максимальной частоты</span></div>
         <div><b>${topic.communities[0].share.toFixed(1)}%</b><span>доля в r/${topic.communities[0].subreddit}</span></div>
-        <div><b>${topic.words.length}</b><span>ключевых фраз</span></div>
+        <div><b>${topic.words.length}</b><span>характерных слов и выражений</span></div>
       </div>`;
 
     $("#dialectClouds").innerHTML = topic.dialects
@@ -2419,7 +2420,7 @@ function renderTopics() {
     $("#topicPosts").innerHTML = topic.posts_examples
       .map(
         (post) =>
-          `<a class="thread-card" ${internalThreadHref(post.reddit_url)}><small>r/${post.subreddit} · ${post.month}</small><strong>${escapeHtml(post.title)}</strong><span>Открыть подборку →</span></a>`,
+          `<a class="thread-card" ${internalThreadHref(post.reddit_url)}><small>r/${post.subreddit} · ${post.month}</small><strong>${escapeHtml(post.title)}</strong><span>Открыть публикацию →</span></a>`,
       )
       .join("");
     initReveal();
@@ -2434,13 +2435,13 @@ function renderThreads() {
       (thread, i) => `
     <article class="thread-preview reveal">
       <img src="${
-        i < 12
-          ? `assets/thread-previews/thread_${String(i + 1).padStart(2, "0")}.jpg`
-          : ASSETS.communities[thread.subreddit]?.cover ||
-            `assets/communities/${thread.subreddit.toLowerCase()}.jpg`
-      }" alt="Превью треда r/${thread.subreddit}" loading="lazy" decoding="async">
+        thread.preview ||
+        (i < 12
+          ? `assets/thread-previews/thread_${String(i + 1).padStart(2, "0")}.webp`
+          : communityCover(thread.subreddit))
+      }" alt="Превью публикации r/${thread.subreddit}" loading="lazy" decoding="async">
       <div class="thread-preview-meta"><span>${thread.month} · r/${thread.subreddit}</span><span>${thread.scene}</span></div>
-      <a ${internalThreadHref(thread.url)} aria-label="Открыть подборку треда"></a>
+      <a ${internalThreadHref(thread.url)} aria-label="Открыть публикацию"></a>
     </article>`,
     )
     .join("");
@@ -2456,9 +2457,11 @@ function initLinks() {
     if (!url) {
       node.hidden = true;
       node.removeAttribute("href");
+      node.setAttribute("aria-hidden", "true");
       return;
     }
     node.hidden = false;
+    node.removeAttribute("aria-hidden");
     node.href = url;
   });
 }

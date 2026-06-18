@@ -1,418 +1,760 @@
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4efe8">
-  <title>Восемь версий одного года — Reddit 2025</title>
-  <meta name="description" content="Интерактивный дата-лонгрид о том, как восемь сообществ Reddit по-разному прожили 2025 год.">
-  <link rel="stylesheet" href="styles.css?v=5.0.0">
-</head>
-<body>
-  <div class="reading-progress" aria-hidden="true"><span></span></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4efe8" />
+    <title>Каким был Reddit в 2025 году — анализ восьми сообществ</title>
+    <meta
+      name="description"
+      content="Интерактивный дата-лонгрид о популярных темах, помесячной динамике и различиях между восемью сообществами Reddit в 2025 году."
+    />
+    <link rel="stylesheet" href="styles.css?v=5.0.0" />
+  </head>
+  <body>
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
 
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="В начало">
-      <span class="brand-mark"><img data-brand="reddit" alt=""></span>
-      <span>Reddit 2025</span>
-    </a>
-    <nav class="site-nav" aria-label="Навигация по материалу">
-      <a href="#forms">Как устроен</a>
-      <a href="#worlds">Миры</a>
-      <a href="#year">Год</a>
-      <a href="#characters">Герои</a>
-      <a href="#fandoms">Фандомы</a>
-      <a href="#sources">Источники</a>
-      <a href="#language">Язык</a>
-    </nav>
-  </header>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="В начало">
+        <span class="brand-mark"><img data-brand="reddit" alt="" /></span>
+        <span>Reddit 2025</span>
+      </a>
+      <nav class="site-nav" aria-label="Навигация по материалу">
+        <a href="#forms">Форматы</a>
+        <a href="#worlds">Сообщества</a>
+        <a href="#year">Динамика</a>
+        <a href="#characters">Упоминания</a>
+        <a href="#fandoms">Релизы</a>
+        <a href="#sources">Источники</a>
+        <a href="#language">Лексика</a>
+      </nav>
+    </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-media" aria-hidden="true">
-        <img src="assets/photo/2025_events_collage.jpg" alt="">
-        <div class="hero-media-shade"></div>
-      </div>
-      <div class="hero-content page-shell">
-        <div class="hero-copy reveal">
-          <div class="eyebrow">Интерактивная история данных</div>
-          <h1>Восемь версий<br><em>одного года</em></h1>
-          <p class="hero-lead">
-            Вы открываете Reddit и видите одну платформу. Данные показывают другое: восемь сообществ прожили 2025-й по разным календарям. В одном год измерялся войнами и выборами, в другом — релизами, а в третьем — вопросами, праздниками и личными историями.
+    <main id="top">
+      <section class="hero">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/photo/2025_events_collage.webp" alt="" />
+          <div class="hero-media-shade"></div>
+        </div>
+        <div class="hero-content page-shell">
+          <div class="hero-copy reveal">
+            <div class="eyebrow">Интерактивный дата-лонгрид</div>
+            <h1>Каким был Reddit<br /><em>в 2025 году</em></h1>
+            <p class="hero-lead">
+              Мы проанализировали 34 680 публикаций из восьми сообществ Reddit,
+              чтобы определить популярные темы, проследить их помесячную
+              динамику и сравнить форматы публикаций, внешние источники и
+              характерную лексику.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#forms"
+                >Перейти к анализу</a
+              >
+              <a class="button button-ghost" href="#method">Методология</a>
+            </div>
+          </div>
+
+          <aside class="hero-evidence reveal delay-1">
+            <div class="hero-evidence-title">Корпус исследования</div>
+            <div id="heroNumbers" class="hero-numbers"></div>
+            <p>
+              В корпус входят заголовки, тексты и метаданные публикаций,
+              открывающих новые ветки обсуждения. Комментарии в основной массив
+              не включены.
+            </p>
+          </aside>
+
+          <div
+            id="heroCommunityStrip"
+            class="hero-community-strip reveal delay-2"
+          ></div>
+        </div>
+        <a class="scroll-cue" href="#forms" aria-label="Прокрутить дальше"
+          ><span></span
+        ></a>
+      </section>
+
+      <section class="reader-promise chapter-paper">
+        <div class="page-shell reader-promise-grid">
+          <div class="reader-promise-number">01</div>
+          <div>
+            <div class="kicker">О проекте</div>
+            <h2>Что показывает анализ</h2>
+          </div>
+          <p>
+            Сайт сравнивает форматы публикаций, тематическую структуру,
+            помесячные изменения, упоминаемые объекты, внешние источники и
+            характерную лексику восьми сообществ. Каждый раздел отвечает на
+            отдельный аналитический вопрос и опирается на публикации из
+            собранного корпуса.
           </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#forms">Посмотреть, как это работает</a>
-            <a class="button button-ghost" href="#method">Методология</a>
-          </div>
         </div>
+      </section>
 
-        <aside class="hero-evidence reveal delay-1">
-          <div class="hero-evidence-title">Мы сравнили</div>
-          <div id="heroNumbers" class="hero-numbers"></div>
-          <p>Пост — это заголовок и текст, с которых пользователь открыл новую ветку. Комментарии не входят в основной массив.</p>
-        </aside>
-
-        <div id="heroCommunityStrip" class="hero-community-strip reveal delay-2"></div>
-      </div>
-      <a class="scroll-cue" href="#forms" aria-label="Прокрутить дальше"><span></span></a>
-    </section>
-
-    <section class="reader-promise chapter-paper">
-      <div class="page-shell reader-promise-grid">
-        <div class="reader-promise-number">01</div>
-        <div>
-          <div class="kicker">Что вы увидите</div>
-          <h2>Платформа одна. Поведение пользователей — разное.</h2>
-        </div>
-        <p>
-          Дальше можно проследить весь путь: как люди начинают разговор, какие события разрывают привычный ритм, кто становится героем месяца, откуда приходят ссылки и почему одна тема меняет язык при переходе между сообществами.
-        </p>
-      </div>
-    </section>
-
-    <section id="forms" class="chapter chapter-paper">
-      <div class="page-shell">
-        <div class="chapter-heading reveal">
-          <div class="chapter-number">02</div>
-          <div>
-            <div class="kicker">Одна платформа — три медиа</div>
-            <h2>Ссылка, вопрос или фанатский спор</h2>
-            <p>Посмотрите на три способа использовать Reddit. Они задают формат разговора ещё до того, как появляется тема.</p>
-          </div>
-        </div>
-        <div id="modeStories" class="mode-stories"></div>
-        <div class="section-bridge reveal">
-          <span>Здесь начинается главное различие:</span>
-          <strong>не все сообщества реагируют на один и тот же год одинаково.</strong>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section id="worlds" class="chapter chapter-worlds">
-      <div class="page-shell wide-shell">
-        <div class="chapter-heading reveal">
-          <div class="chapter-number">03</div>
-          <div>
-            <div class="kicker">Восемь миров крупным планом</div>
-            <h2>У каждого сообщества — свой ритм, тон и повод говорить</h2>
-            <p>Это не список сабреддитов, а восемь разных пользовательских ситуаций. Слева — выбор мира, справа — его визуальный портрет: зачем сюда заходят, как устроены посты и какие треды лучше всего показывают характер сообщества.</p>
-          </div>
-        </div>
-        <div class="worlds-layout reveal">
-          <div id="worldsNav" class="worlds-nav"></div>
-          <div id="worldDisplay" class="world-display"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="map" class="chapter chapter-ink chapter-map-v2 semantic-map-v4 semantic-map-v8">
-      <div class="page-shell wide-shell">
-        <div class="chapter-heading chapter-heading-light map-heading reveal">
-          <div class="chapter-number">04</div>
-          <div>
-            <div class="kicker">Карта разговоров</div>
-            <h2>Похожие посты собираются в архипелаги</h2>
-            <p>Каждый знак — реальный пост. Близость означает похожий словарь. Масштабируйте карту, перетаскивайте поле и открывайте отдельные треды.</p>
-          </div>
-        </div>
-
-        <div class="map-layout map-layout-v2">
-          <aside class="map-story map-story-v2 reveal" aria-label="Управление картой">
-            <section class="map-side-panel map-world-panel">
-              <div class="map-panel-label">Миры разговоров</div>
-              <div id="macroChips" class="macro-chips macro-chips-v2"></div>
-            </section>
-
-            <section class="map-story-card map-story-card-v2">
-              <div class="map-story-card-head">
-                <span>Как читать</span>
-                <i aria-hidden="true">↗</i>
-              </div>
-              <p>Цвет задаёт основной мир разговора. Расстояние и линии показывают словарную близость: связанные посты образуют рыхлые облака, а межтематические треды вытягиваются в мосты.</p>
-            </section>
-
-            <section class="map-side-panel map-post-panel">
-              <div class="map-panel-label">Посты на карте</div>
-              <div id="mapPinnedPosts" class="map-pinned-posts map-pinned-posts-v2"></div>
-              <a class="map-all-posts" href="#threads">Смотреть все посты <span>→</span></a>
-            </section>
-          </aside>
-
-          <div id="semanticMapStage" class="map-stage map-stage-v2 reveal">
-            <div class="map-stage-hint"><span>✦</span> Масштабируйте и исследуйте</div>
-
-            <div class="map-zoom-controls" aria-label="Масштаб карты">
-              <button id="mapZoomIn" type="button" aria-label="Приблизить">+</button>
-              <output id="mapZoomValue" aria-live="polite">100%</output>
-              <button id="mapZoomOut" type="button" aria-label="Отдалить">−</button>
-              <button id="mapReset" type="button" aria-label="Показать всю карту">⌂</button>
+      <section id="forms" class="chapter chapter-paper">
+        <div class="page-shell">
+          <div class="chapter-heading reveal">
+            <div class="chapter-number">02</div>
+            <div>
+              <div class="kicker">Форматы публикаций</div>
+              <h2>Как различаются способы публикации в сообществах</h2>
+              <p>
+                В корпусе выделяются три основных режима публикации: ссылка на
+                внешний материал, пользовательский вопрос или текстовая
+                публикация для обсуждения. Их соотношение показывает, для каких
+                задач участники используют разные сообщества.
+              </p>
             </div>
-
-            <canvas id="semanticCanvas" tabindex="0" aria-label="Интерактивная карта похожих постов. Перетаскивайте карту, используйте колесо для масштаба и стрелки клавиатуры для перемещения."></canvas>
-            <div id="semanticTooltip" class="floating-tooltip map-floating-tooltip" hidden></div>
-
-            <div class="map-mini-wrap" aria-label="Мини-карта">
-              <canvas id="mapMiniCanvas"></canvas>
-              <span class="map-mini-expand" aria-hidden="true">↗</span>
-            </div>
-
-            <div class="map-navigator" aria-label="Управление масштабом карты">
-              <div class="map-navigator-caption"><span>☝</span> Тяните фон для навигации, ползунок — для масштаба</div>
-              <div class="map-navigator-row">
-                <button id="mapPanPrev" type="button" aria-label="Сдвинуть карту влево">←</button>
-                <input id="mapPanRange" type="range" min="0" max="1000" value="500" aria-label="Масштаб карты">
-                <button id="mapPanNext" type="button" aria-label="Сдвинуть карту вправо">→</button>
-              </div>
-            </div>
-
-            <div class="map-caption">Наведите на знак, чтобы прочитать пост. Нажмите, чтобы открыть исходный тред Reddit. Сам знак можно перетащить.</div>
+          </div>
+          <div id="modeStories" class="mode-stories"></div>
+          <div class="section-bridge reveal">
+            <span>Формат публикации влияет на дальнейшее обсуждение:</span>
+            <strong
+              >одни сообщества преимущественно распространяют внешние материалы,
+              другие собирают вопросы и личные истории.</strong
+            >
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="year" class="chapter chapter-year chapter-paper">
-      <div class="page-shell wide-shell">
-        <div class="chapter-heading reveal">
-          <div class="chapter-number">05</div>
-          <div>
-            <div class="kicker">Двенадцать сцен</div>
-            <h2>Общий график сглаживает год. Месяцы — нет.</h2>
-            <p>Прокручивайте месяцы. Справа меняется визуальная сцена, слева остаются реальные посты, которые сделали эпизод заметным.</p>
-          </div>
-        </div>
-        <div class="year-scrolly">
-          <div id="monthSteps" class="month-steps"></div>
-          <aside id="monthVisual" class="month-visual">
-            <div class="month-visual-image"><img alt=""></div>
-            <div class="month-visual-overlay"></div>
-            <div class="month-visual-copy">
-              <div class="month-visual-kicker"></div>
-              <h3></h3>
-              <div class="month-brand-row"></div>
-              <div class="month-visual-stats"></div>
+      <section id="worlds" class="chapter chapter-worlds">
+        <div class="page-shell wide-shell">
+          <div class="chapter-heading reveal">
+            <div class="chapter-number">03</div>
+            <div>
+              <div class="kicker">Сравнение сообществ</div>
+              <h2>
+                Восемь сообществ различаются по темам и структуре публикаций
+              </h2>
+              <p>
+                Для каждого сообщества показаны назначение, преобладающие
+                форматы публикаций, тематические особенности и примеры из
+                корпуса. Переключатель слева позволяет последовательно сравнить
+                восемь сабреддитов.
+              </p>
             </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section id="characters" class="chapter chapter-characters">
-      <div class="page-shell">
-        <div class="chapter-heading reveal">
-          <div class="chapter-number">06</div>
-          <div>
-            <div class="kicker">Кто оставил след</div>
-            <h2>У года появились герои, страны и платформы</h2>
-            <p>Одни объекты возвращались месяцами, другие вспыхивали вокруг одного события. Размер круга показывает число упоминаний.</p>
+          </div>
+          <div class="worlds-layout reveal">
+            <div id="worldsNav" class="worlds-nav"></div>
+            <div id="worldDisplay" class="world-display"></div>
           </div>
         </div>
-        <div class="entity-dashboard reveal">
-          <div class="entity-toolbar">
-            <div id="entityTabs" class="entity-tabs" role="tablist" aria-label="Тип объекта">
-              <button class="entity-tab is-active" type="button" role="tab" aria-selected="true" data-entity-category="all">Все</button>
-              <button class="entity-tab" type="button" role="tab" aria-selected="false" data-entity-category="person">Персоны</button>
-              <button class="entity-tab" type="button" role="tab" aria-selected="false" data-entity-category="country">Страны</button>
-              <button class="entity-tab" type="button" role="tab" aria-selected="false" data-entity-category="platform">Платформы</button>
+      </section>
+
+      <section
+        id="map"
+        class="chapter chapter-ink chapter-map-v2 semantic-map-v4 semantic-map-v8"
+      >
+        <div class="page-shell wide-shell">
+          <div class="chapter-heading chapter-heading-light map-heading reveal">
+            <div class="chapter-number">04</div>
+            <div>
+              <div class="kicker">Тематическая карта</div>
+              <h2>Какие публикации используют сходную лексику</h2>
+              <p>
+                Каждая точка представляет публикацию из сбалансированной
+                выборки. Чем ближе точки расположены друг к другу, тем больше
+                общих слов и тематических признаков содержат их заголовки и
+                тексты.
+              </p>
             </div>
-            <label class="entity-trend-toggle">
-              <input id="entityTrendToggle" type="checkbox" checked>
-              <span class="entity-toggle-track" aria-hidden="true"><i></i></span>
-              <span>Показать линии тренда</span>
-            </label>
           </div>
 
-          <div class="entity-dashboard-grid">
-            <section class="entity-calendar-panel" aria-labelledby="entityCategoryTitle">
-              <header class="entity-calendar-head">
-                <div>
-                  <div class="entity-panel-kicker">Календарь упоминаний</div>
-                  <h3 id="entityCategoryTitle">Общая сцена</h3>
-                  <p id="entityCategoryCopy"></p>
-                </div>
-                <div class="entity-calendar-legend" aria-label="Легенда">
-                  <span><i class="legend-size"></i>размер — число упоминаний</span>
-                  <span><i class="legend-glow"></i>ореол — сила всплеска</span>
-                </div>
-              </header>
-              <div class="entity-stage">
-                <svg id="entityTimeline" role="img" aria-label="Помесячные упоминания субъектов"></svg>
-                <div id="entityTooltip" class="floating-tooltip entity-tooltip" hidden></div>
-              </div>
-            </section>
-
-            <aside class="entity-side-panel">
-              <section class="entity-leaders-panel">
-                <div class="entity-panel-title-row">
-                  <div>
-                    <div class="entity-panel-kicker">Рейтинг</div>
-                    <h3>Лидеры года</h3>
-                  </div>
-                  <span id="entityLeaderCount" class="entity-panel-count"></span>
-                </div>
-                <div id="entityCards" class="entity-leader-grid"></div>
+          <div class="map-layout map-layout-v2">
+            <aside
+              class="map-story map-story-v2 reveal"
+              aria-label="Управление картой"
+            >
+              <section class="map-side-panel map-world-panel">
+                <div class="map-panel-label">Тематические группы</div>
+                <div id="macroChips" class="macro-chips macro-chips-v2"></div>
               </section>
 
-              <section class="entity-spikes-panel">
-                <div class="entity-panel-title-row">
-                  <div>
-                    <div class="entity-panel-kicker">Динамика</div>
-                    <h3>Главные всплески</h3>
-                  </div>
+              <section class="map-story-card map-story-card-v2">
+                <div class="map-story-card-head">
+                  <span>Как читать карту</span>
+                  <i aria-hidden="true">↗</i>
                 </div>
-                <div id="entitySpikes" class="entity-spike-grid"></div>
+                <p>
+                  Цвет обозначает тематическую группу. Расстояние между точками
+                  отражает сходство используемой лексики, а линии связывают
+                  публикации с общими словами и признаками.
+                </p>
               </section>
+
+              <section class="map-side-panel map-post-panel">
+                <div class="map-panel-label">Примеры публикаций</div>
+                <div
+                  id="mapPinnedPosts"
+                  class="map-pinned-posts map-pinned-posts-v2"
+                ></div>
+                <a class="map-all-posts" href="#threads"
+                  >Смотреть все публикации <span>→</span></a
+                >
+              </section>
+            </aside>
+
+            <div id="semanticMapStage" class="map-stage map-stage-v2 reveal">
+              <div class="map-stage-hint">
+                <span>✦</span> Масштабирование и навигация
+              </div>
+
+              <div class="map-zoom-controls" aria-label="Масштаб карты">
+                <button id="mapZoomIn" type="button" aria-label="Приблизить">
+                  +
+                </button>
+                <output id="mapZoomValue" aria-live="polite">100%</output>
+                <button id="mapZoomOut" type="button" aria-label="Отдалить">
+                  −
+                </button>
+                <button
+                  id="mapReset"
+                  type="button"
+                  aria-label="Показать всю карту"
+                >
+                  ⌂
+                </button>
+              </div>
+
+              <canvas
+                id="semanticCanvas"
+                tabindex="0"
+                aria-label="Интерактивная карта публикаций со сходной лексикой. Перетаскивайте карту, используйте колесо для масштаба и стрелки клавиатуры для перемещения."
+              ></canvas>
+              <div
+                id="semanticTooltip"
+                class="floating-tooltip map-floating-tooltip"
+                hidden
+              ></div>
+
+              <div class="map-mini-wrap" aria-label="Мини-карта">
+                <canvas id="mapMiniCanvas"></canvas>
+                <span class="map-mini-expand" aria-hidden="true">↗</span>
+              </div>
+
+              <div
+                class="map-navigator"
+                aria-label="Управление масштабом карты"
+              >
+                <div class="map-navigator-caption">
+                  <span>☝</span> Тяните фон для навигации, ползунок — для
+                  масштаба
+                </div>
+                <div class="map-navigator-row">
+                  <button
+                    id="mapPanPrev"
+                    type="button"
+                    aria-label="Сдвинуть карту влево"
+                  >
+                    ←
+                  </button>
+                  <input
+                    id="mapPanRange"
+                    type="range"
+                    min="0"
+                    max="1000"
+                    value="500"
+                    aria-label="Масштаб карты"
+                  />
+                  <button
+                    id="mapPanNext"
+                    type="button"
+                    aria-label="Сдвинуть карту вправо"
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
+
+              <div class="map-caption">
+                Наведите на точку, чтобы увидеть публикацию. Нажмите, чтобы
+                открыть публикацию на Reddit. Саму точку можно перетащить.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="year" class="chapter chapter-year chapter-paper">
+        <div class="page-shell wide-shell">
+          <div class="chapter-heading reveal">
+            <div class="chapter-number">05</div>
+            <div>
+              <div class="kicker">Помесячная динамика</div>
+              <h2>Какие темы становились заметнее в разные месяцы 2025 года</h2>
+              <p>
+                Для каждого месяца показаны темы и публикации, частота которых
+                заметно выросла относительно других периодов. Примеры слева
+                позволяют проверить, какие материалы сформировали выявленный
+                всплеск.
+              </p>
+            </div>
+          </div>
+          <div class="year-scrolly">
+            <div id="monthSteps" class="month-steps"></div>
+            <aside id="monthVisual" class="month-visual">
+              <div class="month-visual-image"><img alt="" /></div>
+              <div class="month-visual-overlay"></div>
+              <div class="month-visual-copy">
+                <div class="month-visual-kicker"></div>
+                <h3></h3>
+                <div class="month-brand-row"></div>
+                <div class="month-visual-stats"></div>
+              </div>
             </aside>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="fandoms" class="chapter chapter-fandoms chapter-ink">
-      <div class="page-shell wide-shell">
-        <div class="chapter-heading chapter-heading-light reveal">
-          <div class="chapter-number">07</div>
-          <div>
-            <div class="kicker">Релизный календарь</div>
-            <h2>Фандомы проживают год как стену афиш</h2>
-            <p>Кино и игры не следуют политическому календарю. Их ритм задают трейлеры, платформы, ожидание и споры вокруг релизов.</p>
+      <section id="characters" class="chapter chapter-characters">
+        <div class="page-shell">
+          <div class="chapter-heading reveal">
+            <div class="chapter-number">06</div>
+            <div>
+              <div class="kicker">Упоминаемые объекты</div>
+              <h2>
+                Какие лица, страны и платформы чаще упоминались в течение года
+              </h2>
+              <p>
+                График показывает помесячное число упоминаний выбранных
+                объектов. Размер круга соответствует числу упоминаний, а
+                дополнительное выделение обозначает резкий рост относительно
+                обычного уровня.
+              </p>
+            </div>
+          </div>
+          <div class="entity-dashboard reveal">
+            <div class="entity-toolbar">
+              <div
+                id="entityTabs"
+                class="entity-tabs"
+                role="tablist"
+                aria-label="Тип объекта"
+              >
+                <button
+                  class="entity-tab is-active"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  data-entity-category="all"
+                >
+                  Все
+                </button>
+                <button
+                  class="entity-tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  data-entity-category="person"
+                >
+                  Лица
+                </button>
+                <button
+                  class="entity-tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  data-entity-category="country"
+                >
+                  Страны
+                </button>
+                <button
+                  class="entity-tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  data-entity-category="platform"
+                >
+                  Платформы
+                </button>
+              </div>
+              <label class="entity-trend-toggle">
+                <input id="entityTrendToggle" type="checkbox" checked />
+                <span class="entity-toggle-track" aria-hidden="true"
+                  ><i></i
+                ></span>
+                <span>Показать линии тренда</span>
+              </label>
+            </div>
+
+            <div class="entity-dashboard-grid">
+              <section
+                class="entity-calendar-panel"
+                aria-labelledby="entityCategoryTitle"
+              >
+                <header class="entity-calendar-head">
+                  <div>
+                    <div class="entity-panel-kicker">Календарь упоминаний</div>
+                    <h3 id="entityCategoryTitle">Все категории</h3>
+                    <p id="entityCategoryCopy"></p>
+                  </div>
+                  <div class="entity-calendar-legend" aria-label="Легенда">
+                    <span
+                      ><i class="legend-size"></i>размер — число
+                      упоминаний</span
+                    >
+                    <span
+                      ><i class="legend-glow"></i>ореол — сила всплеска</span
+                    >
+                  </div>
+                </header>
+                <div class="entity-stage">
+                  <svg
+                    id="entityTimeline"
+                    role="img"
+                    aria-label="Помесячные упоминания субъектов"
+                  ></svg>
+                  <div
+                    id="entityTooltip"
+                    class="floating-tooltip entity-tooltip"
+                    hidden
+                  ></div>
+                </div>
+              </section>
+
+              <aside class="entity-side-panel">
+                <section class="entity-leaders-panel">
+                  <div class="entity-panel-title-row">
+                    <div>
+                      <div class="entity-panel-kicker">Частота упоминаний</div>
+                      <h3>Наиболее упоминаемые объекты</h3>
+                    </div>
+                    <span
+                      id="entityLeaderCount"
+                      class="entity-panel-count"
+                    ></span>
+                  </div>
+                  <div id="entityCards" class="entity-leader-grid"></div>
+                </section>
+
+                <section class="entity-spikes-panel">
+                  <div class="entity-panel-title-row">
+                    <div>
+                      <div class="entity-panel-kicker">Динамика</div>
+                      <h3>Наибольшие месячные всплески</h3>
+                    </div>
+                  </div>
+                  <div id="entitySpikes" class="entity-spike-grid"></div>
+                </section>
+              </aside>
+            </div>
           </div>
         </div>
-        <div id="fandomWall" class="fandom-wall"></div>
-      </div>
-    </section>
+      </section>
 
-    <section id="sources" class="chapter chapter-sources chapter-paper">
-      <div class="page-shell wide-shell">
-        <div class="chapter-heading reveal">
-          <div class="chapter-number">08</div>
-          <div>
-            <div class="kicker">Откуда приходит повестка</div>
-            <h2>У каждого сообщества — собственное медиаменю</h2>
-            <p>Логотипы здесь имеют аналитическую функцию: они показывают, какие редакции, журналы и платформы чаще приносили материал в каждый сабреддит.</p>
+      <section id="fandoms" class="chapter chapter-fandoms chapter-ink">
+        <div class="page-shell wide-shell">
+          <div class="chapter-heading chapter-heading-light reveal">
+            <div class="chapter-number">07</div>
+            <div>
+              <div class="kicker">Календарь релизов</div>
+              <h2>Как релизы влияли на публикации в r/movies и r/gaming</h2>
+              <p>
+                Карточки расположены по месяцам и показывают фильмы, сериалы и
+                игры, вокруг которых возрастало число публикаций. Для каждого
+                объекта указаны период максимальной активности и сообщества, в
+                которых он обсуждался.
+              </p>
+            </div>
+          </div>
+          <div id="fandomWall" class="fandom-wall"></div>
+        </div>
+      </section>
+
+      <section id="sources" class="chapter chapter-sources chapter-paper">
+        <div class="page-shell wide-shell">
+          <div class="chapter-heading reveal">
+            <div class="chapter-number">08</div>
+            <div>
+              <div class="kicker">Внешние источники</div>
+              <h2>На какие сайты чаще ссылались разные сообщества</h2>
+              <p>
+                Раздел показывает наиболее частые внешние домены в публикациях и
+                распределение ссылок между сообществами. Толщина связи
+                соответствует числу публикаций, содержащих ссылку на источник.
+              </p>
+            </div>
+          </div>
+          <div class="source-layout reveal">
+            <div id="sourceList" class="source-list"></div>
+            <div class="source-flow-stage">
+              <svg
+                id="sourceFlow"
+                role="img"
+                aria-label="Связи внешних источников с сообществами"
+              ></svg>
+            </div>
+            <div id="sourceTargets" class="source-targets"></div>
           </div>
         </div>
-        <div class="source-layout reveal">
-          <div id="sourceList" class="source-list"></div>
-          <div class="source-flow-stage"><svg id="sourceFlow" role="img" aria-label="Потоки источников"></svg></div>
-          <div id="sourceTargets" class="source-targets"></div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="language" class="chapter chapter-language">
+      <section id="language" class="chapter chapter-language">
+        <div class="page-shell">
+          <div class="chapter-heading reveal">
+            <div class="chapter-number">09</div>
+            <div>
+              <div class="kicker">Лексика тем</div>
+              <h2>Как различается словарь одной темы в разных сообществах</h2>
+              <p>
+                Выберите тему, чтобы сравнить слова и выражения, особенно
+                характерные для публикаций разных сообществ. Размер слова
+                показывает его относительную значимость внутри выбранной темы.
+              </p>
+            </div>
+          </div>
+          <div class="topic-control reveal">
+            <label for="topicSelect">Выбрать тему</label>
+            <select id="topicSelect"></select>
+          </div>
+          <div id="topicOverview" class="topic-overview reveal"></div>
+          <div id="dialectClouds" class="dialect-grid"></div>
+          <div id="topicPosts" class="thread-grid"></div>
+        </div>
+      </section>
+
+      <section id="threads" class="chapter chapter-threads chapter-paper">
+        <div class="page-shell wide-shell">
+          <div class="chapter-heading reveal">
+            <div class="chapter-number">10</div>
+            <div>
+              <div class="kicker">Примеры публикаций</div>
+              <h2>Публикации, на которых основаны выводы</h2>
+              <p>
+                В разделе собраны публикации из корпуса, используемые как
+                примеры тематических всплесков, различий между сообществами и
+                характерных форматов. Карточка показывает сохранённый текст и
+                ссылку на исходную публикацию.
+              </p>
+            </div>
+          </div>
+          <div id="threadGallery" class="thread-gallery"></div>
+        </div>
+      </section>
+
+      <section id="findings" class="chapter findings chapter-paper">
+        <div class="page-shell">
+          <div class="chapter-heading reveal">
+            <div class="chapter-number">11</div>
+            <div>
+              <div class="kicker">Результаты анализа</div>
+              <h2>Какие различия видны между восемью сообществами</h2>
+              <p>
+                Краткие выводы ниже суммируют различия в форматах публикаций,
+                переходе тем между сообществами и помесячной динамике культурных
+                публикаций.
+              </p>
+            </div>
+          </div>
+          <div class="findings-grid reveal">
+            <article class="finding-card">
+              <h3>Разные сообщества использовались по-разному</h3>
+              <p>
+                В выборке Reddit одновременно выступал как витрина внешних
+                новостей, пространство пользовательских вопросов и место для
+                обсуждения релизов и франшиз.
+              </p>
+            </article>
+            <article class="finding-card">
+              <h3>Одна тема меняла форму при переходе между сообществами</h3>
+              <p>
+                Одни и те же события встречались в нескольких сообществах, но
+                оформлялись как новостная ссылка, вопрос, рекомендация или
+                пользовательское обсуждение и сопровождались разной лексикой.
+              </p>
+            </article>
+            <article class="finding-card">
+              <h3>Публикации о кино и играх подчинялись календарю релизов</h3>
+              <p>
+                В r/movies и r/gaming заметны отдельные месячные всплески вокруг
+                фильмов, сериалов и игр, которые почти не видны в агрегированном
+                годовом графике.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="method" class="chapter method chapter-ink">
+        <div class="page-shell">
+          <div class="chapter-heading chapter-heading-light reveal">
+            <div class="chapter-number">12</div>
+            <div>
+              <div class="kicker">Методология</div>
+              <h2>Как были собраны и обработаны данные</h2>
+              <p>
+                Анализ включает очистку корпуса, формирование сбалансированной
+                выборки, тематическое моделирование, извлечение сущностей, поиск
+                помесячных всплесков и подсчёт внешних источников. Результаты
+                дополнительно проверялись вручную на примерах публикаций.
+              </p>
+            </div>
+          </div>
+          <div class="method-grid reveal">
+            <article>
+              <span>01</span>
+              <h3>Сбор данных</h3>
+              <p>
+                В основной корпус вошли 34 680 очищенных публикаций из восьми
+                сообществ Reddit за 2025 год.
+              </p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Сбалансированная выборка</h3>
+              <p>
+                Для сопоставления сообществ использованы 19 200 публикаций: по
+                200 публикаций на каждое сочетание сообщества и месяца.
+              </p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Автоматический анализ</h3>
+              <p>
+                Применялись тематическое моделирование, анализ характерной
+                лексики, извлечение сущностей, поиск всплесков и подсчёт внешних
+                доменов.
+              </p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>Ручная проверка</h3>
+              <p>
+                Результаты проверялись по исходным публикациям; неоднозначные
+                названия и примеры корректировались вручную.
+              </p>
+            </article>
+          </div>
+          <section
+            class="method-limitations reveal"
+            aria-labelledby="limitationsTitle"
+          >
+            <div class="method-limitations-head">
+              <div class="kicker">Ограничения</div>
+              <h3 id="limitationsTitle">
+                Что важно учитывать при чтении результатов
+              </h3>
+            </div>
+            <ul class="method-limitations-list">
+              <li>
+                Карта использует сбалансированную выборку, а не весь массив
+                постов.
+              </li>
+              <li>
+                Количество точек на карте не равно частоте темы во всём Reddit.
+              </li>
+              <li>
+                Координаты сочетают алгоритмическую и редакционную раскладку.
+              </li>
+              <li>Сущности и алиасы частично проверялись вручную.</li>
+              <li>
+                Месяцы и релизные объекты редакционно отобраны как отдельные
+                примеры.
+              </li>
+              <li>
+                Комментарии не анализировались и не входят в основной корпус.
+              </li>
+              <li>
+                Раздел «Лексика» показывает 6 тем из 18, а не полный набор.
+              </li>
+              <li>Раздел «Источники» показывает top-15 внешних доменов.</li>
+            </ul>
+          </section>
+          <div class="method-links reveal">
+            <a id="colabLink" hidden>Jupyter Notebook</a>
+            <a id="githubLink" hidden>GitHub</a>
+            <a href="CREDITS.md">Источники, лицензии и использование ИИ</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
       <div class="page-shell">
-        <div class="chapter-heading reveal">
-          <div class="chapter-number">09</div>
-          <div>
-            <div class="kicker">Одна тема — разные языки</div>
-            <h2>Сюжет меняется в зависимости от того, кто о нём говорит</h2>
-            <p>Выберите тему. Облака показывают не самые частые слова вообще, а фразы, особенно характерные для конкретного сообщества.</p>
-          </div>
-        </div>
-        <div class="topic-control reveal">
-          <label for="topicSelect">Выбрать сюжет</label>
-          <select id="topicSelect"></select>
-        </div>
-        <div id="topicOverview" class="topic-overview reveal"></div>
-        <div id="dialectClouds" class="dialect-grid"></div>
-        <div id="topicPosts" class="thread-grid"></div>
+        <strong>Каким был Reddit в 2025 году</strong>
+        <span>Интерактивный дата-лонгрид · НИУ ВШЭ · 2026</span>
       </div>
-    </section>
+    </footer>
 
-    <section id="threads" class="chapter chapter-threads chapter-paper">
-      <div class="page-shell wide-shell">
-        <div class="chapter-heading reveal">
-          <div class="chapter-number">10</div>
-          <div>
-            <div class="kicker">Внутри треда</div>
-            <h2>За каждой точкой остаётся человеческая формулировка</h2>
-            <p>Мы вернулись к исходным тредам, чтобы проверить, как событие превращалось в новость, вопрос, шутку или фанатский спор.</p>
+    <div id="threadReader" class="thread-reader" aria-hidden="true">
+      <button
+        class="thread-reader-backdrop"
+        type="button"
+        data-reader-close
+        aria-label="Закрыть публикацию"
+      ></button>
+      <section
+        class="thread-reader-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="readerTitle"
+      >
+        <header class="thread-reader-header">
+          <div class="thread-reader-brand">
+            <span>r/</span><strong>Публикация из корпуса</strong>
           </div>
-        </div>
-        <div id="threadGallery" class="thread-gallery"></div>
-      </div>
-    </section>
-
-    <section id="method" class="chapter method chapter-ink">
-      <div class="page-shell">
-        <div class="chapter-heading chapter-heading-light reveal">
-          <div class="chapter-number">11</div>
-          <div>
-            <div class="kicker">Как это собрано</div>
-            <h2>Алгоритм ищет материал. Редактура превращает его в историю.</h2>
-            <p>Тематическая модель, словари сущностей и поиск всплесков дают структуру. Названия, объединение алиасов, выбор тредов и формулировка выводов остаются авторской работой.</p>
+          <button
+            class="thread-reader-close"
+            type="button"
+            data-reader-close
+            aria-label="Закрыть"
+          >
+            ×
+          </button>
+        </header>
+        <div class="thread-reader-scroll">
+          <div class="thread-reader-hero">
+            <img id="readerPreview" alt="" />
+            <div class="thread-reader-hero-shade"></div>
+            <div class="thread-reader-hero-copy">
+              <div id="readerMeta" class="thread-reader-meta"></div>
+              <h2 id="readerTitle"></h2>
+              <div id="readerBadges" class="thread-reader-badges"></div>
+            </div>
           </div>
+          <div class="thread-reader-content">
+            <aside class="thread-reader-aside">
+              <div class="reader-note-label">Почему публикация включена</div>
+              <p id="readerContext"></p>
+              <div id="readerSourceState" class="reader-source-state"></div>
+            </aside>
+            <article class="thread-reader-body">
+              <div class="reader-note-label">Текст публикации</div>
+              <p id="readerBody"></p>
+            </article>
+          </div>
+          <section class="thread-reader-related">
+            <div class="reader-note-label">Другие публикации по теме</div>
+            <div id="readerRelated" class="thread-reader-related-grid"></div>
+          </section>
+          <footer class="thread-reader-footer">
+            <p>
+              Карточка составлена по данным, сохранённым во время сбора корпуса.
+              Исходная публикация могла быть удалена или закрыта после выгрузки.
+            </p>
+            <div class="thread-reader-actions">
+              <a
+                id="readerExternalSource"
+                class="reader-action secondary"
+                target="_blank"
+                rel="noopener"
+                hidden
+                >Открыть внешний материал</a
+              >
+              <a
+                id="readerOriginal"
+                class="reader-action"
+                target="_blank"
+                rel="noopener"
+                hidden
+                >Открыть публикацию на Reddit ↗</a
+              >
+            </div>
+          </footer>
         </div>
-        <div class="method-grid reveal">
-          <article><span>01</span><h3>Собрали</h3><p>34 680 очищенных постов использовались для поиска редких сюжетов и упоминаний.</p></article>
-          <article><span>02</span><h3>Сравнили</h3><p>19 200 постов: по 200 для каждого сочетания «сообщество × месяц».</p></article>
-          <article><span>03</span><h3>Сгруппировали</h3><p>NMF, c-TF-IDF, поиск сущностей, всплесков и внешних источников.</p></article>
-          <article><span>04</span><h3>Проверили</h3><p>Каждый сильный сюжет связан с реальными постами и проходит ручное чтение.</p></article>
-        </div>
-        <div class="method-links reveal">
-          <a href="#" id="notebookLink">Jupyter Notebook</a>
-          <a href="#" id="githubLink">GitHub</a>
-          <a href="CREDITS.md">Источники изображений</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="page-shell">
-      <strong>Восемь версий одного года</strong>
-      <span>Учебный дата-лонгрид · НИУ ВШЭ · 2026</span>
+      </section>
     </div>
-  </footer>
 
-
-
-  <div id="threadReader" class="thread-reader" aria-hidden="true">
-    <button class="thread-reader-backdrop" type="button" data-reader-close aria-label="Закрыть подборку"></button>
-    <section class="thread-reader-panel" role="dialog" aria-modal="true" aria-labelledby="readerTitle">
-      <header class="thread-reader-header">
-        <div class="thread-reader-brand"><span>r/</span><strong>Тред из архива проекта</strong></div>
-        <button class="thread-reader-close" type="button" data-reader-close aria-label="Закрыть">×</button>
-      </header>
-      <div class="thread-reader-scroll">
-        <div class="thread-reader-hero">
-          <img id="readerPreview" alt="">
-          <div class="thread-reader-hero-shade"></div>
-          <div class="thread-reader-hero-copy">
-            <div id="readerMeta" class="thread-reader-meta"></div>
-            <h2 id="readerTitle"></h2>
-            <div id="readerBadges" class="thread-reader-badges"></div>
-          </div>
-        </div>
-        <div class="thread-reader-content">
-          <aside class="thread-reader-aside">
-            <div class="reader-note-label">Зачем этот тред здесь</div>
-            <p id="readerContext"></p>
-            <div id="readerSourceState" class="reader-source-state"></div>
-          </aside>
-          <article class="thread-reader-body">
-            <div class="reader-note-label">Сохранённый фрагмент</div>
-            <p id="readerBody"></p>
-          </article>
-        </div>
-        <section class="thread-reader-related">
-          <div class="reader-note-label">Рядом в этой подборке</div>
-          <div id="readerRelated" class="thread-reader-related-grid"></div>
-        </section>
-        <footer class="thread-reader-footer">
-          <p>Карточка собрана из данных, сохранённых во время выгрузки. Исходный тред мог быть удалён или закрыт после сбора.</p>
-          <div class="thread-reader-actions">
-            <a id="readerExternalSource" class="reader-action secondary" href="#" target="_blank" rel="noopener" hidden>Открыть внешний материал</a>
-            <a id="readerOriginal" class="reader-action" href="#" target="_blank" rel="noopener">Попробовать открыть оригинал Reddit ↗</a>
-          </div>
-        </footer>
-      </div>
-    </section>
-  </div>
-
-  <script src="app.js?v=5.0.0" defer></script>
-</body>
+    <script src="app.js?v=5.0.0" defer></script>
+  </body>
 </html>

@@ -1,20 +1,25 @@
-# Credits and visual sources
+# Источники, лицензии и использование ИИ
 
-## Documentary image
+Ниже перечислены только подтверждённые источники и способы создания. Если происхождение локального файла нельзя доказать по текущему репозиторию, он помечен как `REQUIRES_MANUAL_REVIEW`.
 
-- **2025 events collage** — Tarisito / Wikimedia Commons. License: CC BY-SA 4.0. Source: https://commons.wikimedia.org/wiki/File:2025_events_collage.jpg
-- Cropped and color-graded derivatives in `assets/communities/`, `assets/months/` and `assets/fandom-posters/` were created for this academic project from the image above. These derivative image assets are distributed under CC BY-SA 4.0.
+| Файл / группа | Источник | Способ создания | Лицензия | Использование ИИ |
+|---|---|---|---|---|
+| `assets/photo/2025_events_collage.jpg` | Tarisito / Wikimedia Commons, https://commons.wikimedia.org/wiki/File:2025_events_collage.jpg | Используется как отдельный документальный визуал для hero-блока | CC BY-SA 4.0 | Нет подтверждения использования ИИ |
+| `assets/communities/*.webp` | `REQUIRES_MANUAL_REVIEW` | Локальные растровые обложки сообщества; исходный источник в репозитории не задокументирован | `REQUIRES_MANUAL_REVIEW` | `REQUIRES_MANUAL_REVIEW` |
+| `assets/community-nav/*.webp` | `REQUIRES_MANUAL_REVIEW` | Локальные растровые карточки для верхней навигации; подтверждённый первоисточник не найден | `REQUIRES_MANUAL_REVIEW` | `REQUIRES_MANUAL_REVIEW` |
+| `assets/community-nav/*.svg` | Проектный репозиторий | Локальные SVG-иконки навигации, используемые как декоративные знаки сообществ | Авторская векторная графика проекта | Нет |
+| `assets/months/*.webp` | `REQUIRES_MANUAL_REVIEW` | Локальные растровые иллюстрации месяцев; подтверждённый источник отсутствует | `REQUIRES_MANUAL_REVIEW` | `REQUIRES_MANUAL_REVIEW` |
+| `assets/fandom-posters/*.webp` | `REQUIRES_MANUAL_REVIEW` | Локальные постеры фандомов; подтверждённая история происхождения не найдена | `REQUIRES_MANUAL_REVIEW` | `REQUIRES_MANUAL_REVIEW` |
+| `assets/thread-previews/*` | Проектный репозиторий | Редакционные реконструкции превью тредов по данным Reddit; не содержат пользовательские аватары и не копируют интерфейс целиком | Авторская графика проекта | Нет подтверждения использования ИИ |
+| `assets/sources/*.svg` | Проектный репозиторий | Локальные SVG-иконки доменов-источников для блока `sources` | Авторская векторная графика проекта | Нет |
+| `assets/brands/*.svg` | Проектный репозиторий | Локальные цветовые монограммы брендов и платформ, созданные для интерфейсной идентификации внутри проекта; это не официальные логотипы компаний | Авторская векторная графика проекта | Нет |
+| `data/site_data.json`, `data/thread_dossiers.json` | Публичные посты Reddit из исследовательского корпуса проекта | Редакционная подготовка данных, выбор тредов, группировка и описание контекста | Данные исследования проекта; требуется отдельная проверка условий публикации корпуса | Нет |
+| `index.html`, `styles.css`, `app.js`, `validate_data.py`, `optimize_assets.py`, `build_site_data.py` | Проектный репозиторий | Код, вёрстка, визуальная логика, валидация и служебные скрипты проекта | Авторский код проекта | Нет |
 
-## Brand marks
+## REQUIRES_MANUAL_REVIEW
 
-- Brand SVG marks are loaded from **Simple Icons v16.23.0** through jsDelivr. Simple Icons package: CC0-1.0; brand names and marks remain trademarks of their respective owners. Source: https://github.com/simple-icons/simple-icons
-- Brand marks are used for identification and editorial commentary in an educational, non-commercial data project.
-
-## Reddit material
-
-- Post titles and links come from publicly available Reddit posts in the research corpus.
-- Thread preview cards are author-designed reconstructions. They do not reproduce user avatars or usernames.
-
-## Code and charts
-
-- HTML, CSS, JavaScript, Python asset builder and editorial compositions: project author.
+- `assets/communities/*.webp`
+- `assets/community-nav/*.webp`
+- `assets/months/*.webp`
+- `assets/fandom-posters/*.webp`
+- Любые дополнительные внешние источники, если они использовались при подготовке локальных растровых изображений вне истории репозитория
